@@ -46,7 +46,7 @@ console.log(\u2014'Hello World');
 \`console.log(\u2014'Hello World')\``,
     },
     {
-      name: 'Irregular dash in a math block should be skipped by default',
+      name: 'irregular dash in a math',
       code: `$$
 x\u2212y
 $$`,
@@ -55,7 +55,7 @@ $$`,
       },
     },
     {
-      name: 'Irregular dash in inline math should be skipped by default',
+      name: 'irregular dash in inline math',
       code: '$x\u2212y$',
       languageOptions: {
         math: true,
@@ -672,7 +672,7 @@ $a\u2212b$`,
       },
     },
     {
-      name: 'Irregular dash outside skipped math regions should be reported',
+      name: '`skipMath: true, skipInlineMath: true` should report an irregular dash outside skipped math regions',
       code: `Prose\u2212text
 
 $$
@@ -704,7 +704,7 @@ $a\u2212b$`,
       },
     },
     {
-      name: 'Math delimiters should not skip an irregular dash when math parsing is disabled',
+      name: '`skipMath: true` should not skip math delimiters when math parsing is disabled',
       code: `$$
 x\u2212y
 $$`,
@@ -730,7 +730,7 @@ $$`,
       ],
     },
     {
-      name: 'Inline math delimiters should not skip an irregular dash when math parsing is disabled',
+      name: '`skipInlineMath: true` should not skip inline math delimiters when math parsing is disabled',
       code: '$x\u2212y$',
       output: '$x-y$',
       errors: [
