@@ -300,18 +300,6 @@ This option requires enabling math parsing with [`languageOptions: { math: true 
 This option requires enabling math parsing with [`languageOptions: { math: true }`](https://github.com/eslint/markdown#enabling-math-latex-in-both-commonmark-and-gfm).
 :::
 
-::: warning Behavior change
-With math parsing enabled, irregular dashes inside math blocks and inline math are skipped by default. Set both options to `false` to preserve the previous behavior:
-
-```js
-'md/no-irregular-dash': ['error', {
-  skipMath: false,
-  skipInlineMath: false,
-}]
-```
-
-:::
-
 ## Fix
 
 This rule fixes the irregular dashes by replacing them with the ASCII hyphen-minus (`-`), or with the value configured through the [`override`](#override) option.
