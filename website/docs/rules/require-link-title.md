@@ -11,7 +11,7 @@ The rule examines all link elements in a Markdown document and reports any links
 - Link reference definitions: `[ref]: url "title"`
 - HTML link tags: `<a href="url" title="title">text</a>`
 
-HTML `<a>` elements without an `href` attribute and elements with `aria-hidden="true"` are ignored.
+HTML `<a>` elements without an `href` attribute or with `aria-hidden="true"` are ignored.
 
 ## Examples
 
