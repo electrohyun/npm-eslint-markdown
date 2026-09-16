@@ -88,20 +88,24 @@ ruleTester('require-link-title', rule, {
       code: '<a href="https://example.com" title="title">text</a>',
     },
     {
-      name: 'Html node without href attribute',
-      code: '<a id="section"></a>',
-    },
-    {
-      name: 'Html node with aria-hidden attribute set to true',
-      code: '<a aria-hidden="true" href="https://example.com">text</a>',
-    },
-    {
       name: 'Nested Html node with title attribute',
       code: `
 <div>
   <a href="https://example.com" title="title">text</a>
 </div>
 `,
+    },
+    {
+      name: 'Html node without any attributes',
+      code: '<a></a>',
+    },
+    {
+      name: 'Html node without href attribute',
+      code: '<a id="section"></a>',
+    },
+    {
+      name: 'Html node with aria-hidden attribute set to true',
+      code: '<a aria-hidden="true" href="https://example.com">text</a>',
     },
 
     // Options
@@ -341,6 +345,19 @@ ruleTester('require-link-title', rule, {
           column: 1,
           endLine: 1,
           endColumn: 12,
+        },
+      ],
+    },
+    {
+      name: 'Html node with lone aria-hidden attribute',
+      code: '<a href="https://example.com" aria-hidden>text</a>',
+      errors: [
+        {
+          messageId: 'requireLinkTitle',
+          line: 1,
+          column: 1,
+          endLine: 1,
+          endColumn: 43,
         },
       ],
     },
