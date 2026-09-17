@@ -73,12 +73,20 @@ ruleTester('require-image-title', rule, {
       code: '<img src="https://example.com/image.jpg" title="title">',
     },
     {
-      name: 'Html node without src, srcset, or alt attribute',
-      code: '<img id="1">',
+      name: 'Nested Html node with title attribute',
+      code: `
+<div>
+  <img src="https://example.com/image.jpg" title="title">
+</div>
+`,
     },
     {
       name: 'Html node without any attributes',
       code: '<img>',
+    },
+    {
+      name: 'Html node without src, srcset, or alt attribute',
+      code: '<img id="1">',
     },
     {
       name: 'Html node with lone alt attribute',
@@ -95,14 +103,6 @@ ruleTester('require-image-title', rule, {
     {
       name: 'Html node with aria-hidden attribute set to true',
       code: '<img src="https://example.com/image.jpg" aria-hidden="true">',
-    },
-    {
-      name: 'Nested Html node with title attribute',
-      code: `
-<div>
-  <img src="https://example.com/image.jpg" title="title">
-</div>
-`,
     },
 
     // Options
