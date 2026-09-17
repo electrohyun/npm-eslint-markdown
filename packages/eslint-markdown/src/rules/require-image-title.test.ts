@@ -73,6 +73,18 @@ ruleTester('require-image-title', rule, {
       code: '<img src="https://example.com/image.jpg" title="title">',
     },
     {
+      name: 'Html node without src, srcset, or alt attribute',
+      code: '<img id="1">',
+    },
+    {
+      name: 'Html node with empty alt attribute',
+      code: '<img src="https://example.com/image.jpg" alt="">',
+    },
+    {
+      name: 'Html node with aria-hidden attribute set to true',
+      code: '<img src="https://example.com/image.jpg" aria-hidden="true">',
+    },
+    {
       name: 'Nested Html node with title attribute',
       code: `
 <div>
@@ -305,6 +317,90 @@ ruleTester('require-image-title', rule, {
           column: 1,
           endLine: 1,
           endColumn: 51,
+        },
+      ],
+    },
+    {
+      name: 'Html node with empty src attribute and without title attribute',
+      code: '<img src="">',
+      errors: [
+        {
+          messageId: 'requireImageTitle',
+          line: 1,
+          column: 1,
+          endLine: 1,
+          endColumn: 13,
+        },
+      ],
+    },
+    {
+      name: 'Html node with srcset attribute and without title attribute',
+      code: '<img srcset="https://example.com/image.jpg">',
+      errors: [
+        {
+          messageId: 'requireImageTitle',
+          line: 1,
+          column: 1,
+          endLine: 1,
+          endColumn: 45,
+        },
+      ],
+    },
+    {
+      name: 'Html node with non-empty alt attribute and without title attribute',
+      code: '<img alt="Alt text">',
+      errors: [
+        {
+          messageId: 'requireImageTitle',
+          line: 1,
+          column: 1,
+          endLine: 1,
+          endColumn: 21,
+        },
+      ],
+    },
+    {
+      name: 'Html node with lone aria-hidden attribute',
+      code: '<img src="https://example.com/image.jpg" aria-hidden>',
+      errors: [
+        {
+          messageId: 'requireImageTitle',
+          line: 1,
+          column: 1,
+          endLine: 1,
+          endColumn: 54,
+        },
+      ],
+    },
+    {
+      name: 'Html node with aria-hidden attribute set to false',
+      code: '<img src="https://example.com/image.jpg" aria-hidden="false">',
+      errors: [
+        {
+          messageId: 'requireImageTitle',
+          line: 1,
+          column: 1,
+          endLine: 1,
+          endColumn: 62,
+        },
+      ],
+    },
+    {
+      name: 'Nested Html node with ignored images followed by image without title attribute',
+      code: `
+<div>
+  <img id="1">
+  <img src="https://example.com/image.jpg" alt="">
+  <img src="https://example.com/image.jpg" aria-hidden="true">
+  <img src="https://example.com/image.jpg">
+</div>`,
+      errors: [
+        {
+          messageId: 'requireImageTitle',
+          line: 6,
+          column: 3,
+          endLine: 6,
+          endColumn: 44,
         },
       ],
     },
