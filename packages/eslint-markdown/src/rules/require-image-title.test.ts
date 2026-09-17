@@ -77,6 +77,18 @@ ruleTester('require-image-title', rule, {
       code: '<img id="1">',
     },
     {
+      name: 'Html node without any attributes',
+      code: '<img>',
+    },
+    {
+      name: 'Html node with lone alt attribute',
+      code: '<img alt>',
+    },
+    {
+      name: 'Html node with empty alt attribute and without src or srcset attribute',
+      code: '<img alt="">',
+    },
+    {
       name: 'Html node with empty alt attribute',
       code: '<img src="https://example.com/image.jpg" alt="">',
     },
